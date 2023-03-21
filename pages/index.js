@@ -1,8 +1,26 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import { useRef, useState } from 'react';
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+
+  const [myStyle, setMyStyle]=useState(styles.toggle);
+  const [myStyle2, setMyStyle2]=useState(styles.showcase);
+  const styleRef=useRef(null);
+  
+  const toggleFnc=()=>{
+    if (styleRef.current.classList.value===(`${styles.toggle} ${styles.active}`)){
+      setMyStyle(`${styles.toggle}`)
+      setMyStyle2(`${styles.showcase}`)
+    } else {
+      setMyStyle(`${styles.toggle} ${styles.active}`)
+      setMyStyle2(`${styles.showcase} ${styles.active}`)
+    }
+    // setMyStyle(`${styles.toggle} ${styles.active}`);
+  }
+
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,58 +30,34 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <section className={myStyle2}>
+          <header>
+            <h1 className={styles.logo}>Fantasy</h1>
+            <div ref={styleRef} onClick={toggleFnc} className={myStyle}></div>
+          </header>
+          <video src="fantasy.mp4" autoPlay loop muted></video>
+          <div className={styles.overlay}></div>
+          <div className={styles.text}>
+            <h2>Fantasy Line</h2>
+            <h3>Expore Something New</h3>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, excepturi! Dolore est amet natus assumenda?</p>
+            <a href="#">Dive into</a>
+          </div>
+          <ul className={styles.social}>
+            <li><a href="#"><img src="facebook.png" alt="" /></a></li>
+            <li><a href="#"><img src="twitter.png" alt="" /></a></li>
+            <li><a href="#"><img src="instagram.png" alt="" /></a></li>
+          </ul>
+        </section>
+        <div className={styles.menu}>
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Destination</a></li>
+            <li><a href="">Suppoer</a></li>
+          </ul>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }

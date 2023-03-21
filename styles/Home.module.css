@@ -1,129 +1,189 @@
-.container {
-  padding: 0 2rem;
+.vdo {
+  width: 300px;
+  height: 300px;
+  background-color: azure;
+  background: url("../public/sample.mp4") repeat;
 }
 
 .main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
+}
+
+.showcase {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  color: #fff;
+  padding: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  transition: .25s;
 }
 
-.footer {
+.showcase.active{
+  position: absolute;
+  /* transform: translateX(-300px); */
+  right: 300px;
+}
+
+.showcase header {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
   align-items: center;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
+  justify-content: space-between;
+  width: 100%;
   text-align: center;
+  padding: 40px 100px;
+  z-index: 1000;
 }
 
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+  z-index: -1;
 }
 
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
+.menu ul{
+  list-style: none;
+  font-size: 24px;
+}
+
+.menu ul a{
   text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  color: #111;
+  transition: .2s;
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+.menu ul a:hover{
+  color: #03a9f4;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.showcase video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.toggle {
+  width: 60px;
+  height: 60px;
+  background: url(../public/menu.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.toggle.active{
+  width: 60px;
+  height: 60px;
+  background: url(../public/close.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
+  cursor: pointer;
 }
 
 .logo {
-  height: 1em;
-  margin-left: 0.5rem;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2383b3;
+  mix-blend-mode: overlay;
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
+.text {
+  z-index: 10;
+}
+
+.text h2{
+  font-size: 5em;
+  font-weight:800;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1em;
+}
+
+.text h3{
+  font-size: 4em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1em;
+}
+
+.text p{
+  font-size: 1.1em;
+  margin: 20px 0;
+  color: #fff;
+  max-width: 700px;
+}
+
+.text a{
+  text-decoration: none;
+  display:inline-block;
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px 30px;
+  color: #111;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  transition: .3s;
+}
+
+.text a:hover{
+  letter-spacing: 6px;
+}
+
+.social {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+}
+
+.social li{
+  list-style: none;
+}
+
+.social li a{
+  display: inline-block;
+  margin-right: 20px;
+  transition: .2s;
+}
+
+.social li a:hover{
+  transform: translateY(-15px);
+}
+
+@media (max-width:798px) {
+ .showcase,
+ .showcase header{
+  padding: 40px;
+ } 
+ .text h2{
+  font-size: 3em;
+ }
+ .text h3{
+  font-size: 2em;
+ }
 }
