@@ -35,7 +35,7 @@ export default function Home() {
             <h1 className={styles.logo}>Fantasy</h1>
             <div ref={styleRef} onClick={toggleFnc} className={myStyle}></div>
           </header>
-          <video src="fantasy.mp4" autoPlay loop muted></video>
+          <video src="fantasy.mp4" autoPlay loop muted playsInline></video>
           <div className={styles.overlay}></div>
           <div className={styles.text}>
             <h2>Fantasy Line</h2>
